@@ -1,4 +1,4 @@
-export function goQrUrl({ data, mode }) {
+export function goQrUrl({ data, mode, color = "#000000" }) {
 
   let formatted = data;
 
@@ -14,5 +14,7 @@ export function goQrUrl({ data, mode }) {
     formatted = `MECARD:N:${name};TEL:${phone};EMAIL:${email};;`;
   }
 
-  return `https://api.qrserver.com/v1/create-qr-code/?data=${encodeURIComponent(formatted)}`;
+  const hex = color.replace("#","");
+
+  return `https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=${encodeURIComponent(formatted)}&color=${hex}`;
 }

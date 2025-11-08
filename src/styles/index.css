@@ -280,60 +280,150 @@ body.light-theme .light-overlay {
   }
 }
 
+.select-wrap {
+  position: relative;
+  display: inline-block;
+}
+.select-wrap select {
+  padding-right: 32px; /* space for the ? */
+}
+.mode-help {
+  position: absolute;
+  right: 8px;
+  top: 52%;
+  transform: translateY(-50%);
+  width: 18px;
+  height: 18px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: black;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size: 12px;
+  font-weight: 700;
+  cursor:pointer;
+}
+.mode-help:hover::after {
+  content: "WiFi → ssid|pass|WPA   Contact → Name|Phone|Email";
+  position: absolute;
+  white-space: nowrap;
+  top: 24px;
+  left: -60px;
+  background: rgba(15,17,22,0.7);
+  backdrop-filter: blur(12px);
+  padding:6px 10px;
+  border-radius:8px;
+  font-size:12px;
+  border:1px solid rgba(255,255,255,0.1);
+  color:white;
+  z-index:999;
+}
+
+.mode-tabs {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.mode-tabs button {
+  padding: 8px 14px;
+  border-radius: 8px;
+  border: 1px solid rgba(255,255,255,0.15);
+  background: rgba(255,255,255,0.06);
+  color: var(--text);
+  cursor: pointer;
+  font-size: 0.9rem;
+  transition: background 0.2s, border 0.2s;
+}
+
+.mode-tabs button.active {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+.mode-tabs button:hover:not(.active) {
+  border-color: var(--accent);
+}
 
 
 /* =================================== */
-/* == RESPONSIVE STYLES START HERE == */
+/* == RESPONSIVE STYLES 2025 CLEAN  == */
 /* =================================== */
 
-/* For Tablets and Small Desktops */
+/* Tablets / Smaller Laptops */
 @media (max-width: 900px) {
   body {
-    padding: 20px; /* Less padding */
+    padding: 20px;
   }
 
   .heading-text {
-    font-size: 42px; /* Slightly smaller text */
-    margin-top: 15rem; /* Less top margin */
-    margin-bottom: 8rem; /* Less bottom margin */
+    font-size: 42px;
+    margin-top: 13rem;
+    margin-bottom: 7rem;
   }
 
   .qr-img {
-    width: 240px; /* Smaller QR code */
+    width: 240px;
     height: 240px;
+  }
+
+  .app {
+    max-width: 90%;
   }
 }
 
-/* For Mobile Phones */
+
+/* Mobile */
 @media (max-width: 600px) {
   body {
-    padding: 15px; /* Even less padding */
+    padding: 14px;
   }
 
   .heading-text {
-    font-size: 32px; /* Much smaller text */
-    margin-top: 8rem; /* Much less top margin */
-    margin-bottom: 4rem; /* Much less bottom margin */
+    font-size: 30px;
+    margin-top: 5rem;
+    margin-bottom: 3rem;
   }
 
   .card {
-    padding: 15px; /* Less padding on card */
+    padding: 14px;
   }
 
   .qr-form {
-    flex-direction: column; /* Stack form elements vertically */
+    flex-direction: column;
+    gap: 10px;
   }
 
   .qr-form input,
   .qr-form select,
   .qr-form button {
-    width: 100%; /* Make all form elements full-width */
+    width: 100%;
   }
 
   .qr-img {
-    width: 100%; /* Make image responsive */
-    max-width: 240px; /* Limit max size */
-    height: auto; /* Maintain aspect ratio */
+    width: 100%;
+    max-width: 220px;
     aspect-ratio: 1 / 1;
+    height: auto;
+  }
+
+  /* mode tabs */
+  .mode-tabs {
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 8px;
+  }
+
+  .mode-tabs button {
+    flex: 1;
+    min-width: 88px;
+    text-align: center;
+  }
+
+  /* color picker */
+  .color-picker {
+    width: 100%;
   }
 }
